@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pra você, amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* VOICE: tender, quiet, personal — a letter, not a website
+   IDEA: an envelope sealed with a heart that opens into a handwritten letter and a string of photos
+   PICTURE: the sealed envelope on the first screen; then polaroids hung on a line, in time order
+   COLOUR and TYPE: wine ground, blush paper, one rose accent; Caveat handwriting + Figtree body
+   LAYOUT: one column, centered, phone first */
+:root{color-scheme:light dark;
+--bg:light-dark(#5b1a2c,#2a0b14);--paper:light-dark(#fff6f4,#3a1520);--ink:light-dark(#2b1017,#fbe9ec);
+--soft:light-dark(#7a4a55,#d9aab5);--rose:#e0496f;--line:light-dark(#efd3d8,#5a2735)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Figtree,system-ui,sans-serif;overflow-x:clip}
+.hand{font-family:Caveat,cursive}
+/* envelope */
+#capa{min-height:100svh;display:grid;place-items:center;padding:32px 20px;text-align:center;color:#fbe9ec}
+#capa h1{font:700 clamp(40px,11vw,60px)/1.05 Caveat,cursive;margin:0 0 6px}
+#capa p{margin:0 0 28px;color:#f3c3cf}
+.env{position:relative;width:min(320px,84vw);aspect-ratio:1.5;margin:0 auto 32px;background:#f7dfe3;border-radius:10px;box-shadow:0 24px 50px rgba(0,0,0,.35);overflow:hidden}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to top right,#efcdd4 50%,transparent 50.5%) left/50% 100% no-repeat,linear-gradient(to top left,#efcdd4 50%,transparent 50.5%) right/50% 100% no-repeat}
+.flap{position:absolute;left:0;right:0;top:0;height:62%;background:#f2d3d9;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s ease;filter:drop-shadow(0 3px 2px rgba(0,0,0,.08))}
+.seal{position:absolute;left:50%;top:56%;width:54px;height:54px;margin:-27px 0 0 -27px;background:var(--rose);border-radius:50%;display:grid;place-items:center;box-shadow:0 4px 10px rgba(120,0,30,.35);transition:opacity .4s}
+.seal svg{width:26px;fill:#fff}
+.open .flap{transform:rotateX(180deg)}.open .seal{opacity:0}
+button{font:600 17px Figtree,sans-serif;min-height:48px;padding:0 28px;border:0;border-radius:99px;background:var(--rose);color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* letter */
+#carta{display:none}
+#carta.show{display:block;animation:sobe .8s ease both}
+@keyframes sobe{from{opacity:0;transform:translateY(24px)}}
+.papel{background:var(--paper);max-width:640px;margin:0 auto;padding:clamp(28px,6vw,56px) clamp(22px,6vw,56px);border-radius:6px 6px 0 0;
+background-image:repeating-linear-gradient(transparent 0 33px,var(--line) 33px 34px);background-position:0 18px}
+.papel h2{font:700 44px/1.05 Caveat,cursive;margin:0 0 18px;color:var(--rose)}
+.papel p{margin:0 0 18px;max-width:62ch}
+.ass{font:700 38px/1 Caveat,cursive;margin-top:26px;color:var(--rose)}
+/* photos */
+.fotos{background:var(--paper);max-width:640px;margin:0 auto;padding:8px clamp(16px,5vw,40px) 56px;border-radius:0 0 6px 6px}
+.fotos h3{font:700 34px/1.1 Caveat,cursive;text-align:center;margin:10px 0 26px;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+figure{margin:0;background:#fff;padding:9px 9px 6px;box-shadow:0 8px 18px rgba(60,10,25,.18);border-radius:2px}
+figure:nth-child(odd){transform:rotate(-1.6deg)}figure:nth-child(even){transform:rotate(1.4deg)}
+figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee}
+figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padding-top:6px}
+.fim{text-align:center;color:#fbe9ec;padding:48px 20px 64px}
+.fim p{font:700 clamp(34px,8vw,46px)/1.1 Caveat,cursive;margin:0}
+.fim small{display:block;margin-top:10px;color:#f3c3cf;font-size:15px}
+@media(max-width:380px){.grid{gap:18px 12px}figcaption{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.flap,.seal{transition:none}#carta.show{animation:none}}
+</style>
+</head>
+<body>
+<section id="capa">
+  <div>
+    <h1>Pra você, amor</h1>
+    <p>Tem uma coisa que eu preciso te dizer.</p>
+    <div class="env" id="env" aria-hidden="true">
+      <div class="flap"></div>
+      <div class="seal"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+    </div>
+    <button id="abrir" type="button">Abrir a carta</button>
+  </div>
+</section>
+
+<main id="carta">
+  <article class="papel">
+    <h2>Amor,</h2>
+    <p>Eu sei que esses dias não foram fáceis, e que uma parte grande disso veio de mim.</p>
+    <p>No sábado, quando eu te cutuquei pra você não falar, eu te deixei sozinha justo onde eu devia estar do seu lado. E quando falaram de você daquele jeito, eu demorei pra reagir. Você tinha toda razão de ficar magoada.</p>
+    <p>Você já passou por coisa demais na vida pra ainda ter que se defender sozinha da minha família. Isso não vai se repetir. Essa semana eu vou conversar com o meu pai e deixar claro que ninguém fala de você assim. Quem fala de você, fala de mim.</p>
+    <p>Sobre o meu esquecimento: eu sei que pra você parece falta de atenção. Não é falta de amor, mas eu entendo que machuca do mesmo jeito. Então eu vou te mostrar isso no dia a dia, e não só com palavras.</p>
+    <p>Desde março do ano passado você e o Joaquim viraram a minha casa. Olha essas fotos aí embaixo: é isso que eu quero cuidar.</p>
+    <p>Eu te amo. Fica bem hoje, que eu tô aqui.</p>
+    <div class="ass">Gustavo</div>
+  </article>
+  <section class="fotos">
+    <h3>A gente até aqui</h3>
+    <div class="grid" id="grid"></div>
+  </section>
+  <div class="fim"><p>Ainda tem muita foto pra tirar.</p><small>com amor, pra Carol</small></div>
+</main>
+
+<script>
+{
+  const fotos=[
+    ["f01","maio de 2025"],["f02","maio de 2025"],["f03","junho de 2025"],["f04","setembro de 2025"],
+    ["f05","novembro de 2025"],["f06","janeiro de 2026"],["f07","abril de 2026"],["f08","junho de 2026"],
+    ["f09","junho de 2026"],["f10","agosto de 2026"],["f11","outubro de 2026"]
+  ];
+  document.getElementById('grid').innerHTML=fotos.map(([f,d])=>`<figure><img src="img/${f}.jpg" alt="Foto nossa de ${d}" loading="lazy"><figcaption>${d}</figcaption></figure>`).join('');
+  const btn=document.getElementById('abrir'),env=document.getElementById('env'),carta=document.getElementById('carta');
+  btn.addEventListener('click',()=>{
+    env.classList.add('open');btn.disabled=true;
+    const reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(()=>{carta.classList.add('show');document.getElementById('capa').style.minHeight='auto';carta.scrollIntoView({behavior:reduz?'auto':'smooth'});},reduz?0:750);
+  });
+}
+</script>
+</body>
+</html>
