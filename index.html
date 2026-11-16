@@ -46,6 +46,7 @@ background-image:repeating-linear-gradient(transparent 0 33px,var(--line) 33px 3
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
 figure{margin:0;background:#fff;padding:9px 9px 6px;box-shadow:0 8px 18px rgba(60,10,25,.18);border-radius:2px}
 figure:nth-child(odd){transform:rotate(-1.6deg)}figure:nth-child(even){transform:rotate(1.4deg)}
+.vid{display:block;width:min(100%,360px);margin:0 auto 34px;border-radius:10px;box-shadow:0 10px 24px rgba(60,10,25,.25);background:#000;aspect-ratio:9/16}
 figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee}
 figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padding-top:6px}
 .fim{text-align:center;color:#fbe9ec;padding:48px 20px 64px}
@@ -71,16 +72,18 @@ figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padd
 <main id="carta">
   <article class="papel">
     <h2>Amor,</h2>
-    <p>Eu sei que esses dias não foram fáceis, e que uma parte grande disso veio de mim.</p>
-    <p>No sábado, quando eu te cutuquei pra você não falar, eu te deixei sozinha justo onde eu devia estar do seu lado. E quando falaram de você daquele jeito, eu demorei pra reagir. Você tinha toda razão de ficar magoada.</p>
-    <p>Você já passou por coisa demais na vida pra ainda ter que se defender sozinha da minha família. Isso não vai se repetir. Essa semana eu vou conversar com o meu pai e deixar claro que ninguém fala de você assim. Quem fala de você, fala de mim.</p>
-    <p>Sobre o meu esquecimento: eu sei que pra você parece falta de atenção. Não é falta de amor, mas eu entendo que machuca do mesmo jeito. Então eu vou te mostrar isso no dia a dia, e não só com palavras.</p>
-    <p>Desde março do ano passado você e o Joaquim viraram a minha casa. Olha essas fotos aí embaixo: é isso que eu quero cuidar.</p>
-    <p>Eu te amo. Fica bem hoje, que eu tô aqui.</p>
+    <p>Eu sei que esses dias não foram fáceis, e que uma parte grande disso veio da minha família.</p>
+    <p>No sábado, quando eu te cutuquei pra você não falar, eu te deixei sozinha justo onde eu devia estar do seu lado. E quando falaram de você daquele jeito, eu demorei pra reagir. Você tem toda razão de ficar magoada.</p>
+    <p>Você já passou por coisa demais na vida pra ainda ter que se defender sozinha da minha família. Isso não vai se repetir. Essa semana eu vou conversar com o meu pai e deixar claro que ninguém mais fala de você assim. Quem fala de você, fala de mim. Eu fiquei muito triste com isso.</p>
+    <p>Sei também que o meu esquecimento tem te machucado. Quero que você saiba que não é falta de carinho nem de importância. Eu vou me esforçar de verdade pra prestar mais atenção em você, no que você me conta e no que é importante pra você.</p>
+    <p>Desde o ano passado, você e o Tulim viraram a minha família, e a partir de agora eu vou honrar vocês cada vez mais. Desculpa por tudo isso. Eu te amo de verdade. Sei que esses últimos dias têm sido complicados, mas estou te fazendo essa homenagem pra voltar a aquecer o amor que a gente sente um pelo outro. Me permita sempre poder cuidar de você e te amar.</p>
+    <p>Essas fotos aqui embaixo mostram o que eu quero cuidar e o que a gente sente um pelo outro.</p>
+    <p>Eu te amo, meu neneco! Beijinhos no seu coração 🥰🥰</p>
     <div class="ass">Gustavo</div>
   </article>
   <section class="fotos">
     <h3>A gente até aqui</h3>
+    <video class="vid" src="video/nos.mp4" poster="img/f12.jpg" autoplay muted loop playsinline preload="metadata"></video>
     <div class="grid" id="grid"></div>
   </section>
   <div class="fim"><p>Ainda tem muita foto pra tirar.</p><small>com amor, pra Carol</small></div>
@@ -91,9 +94,9 @@ figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padd
   const fotos=[
     ["f01","maio de 2025"],["f02","maio de 2025"],["f03","junho de 2025"],["f04","setembro de 2025"],
     ["f05","novembro de 2025"],["f06","janeiro de 2026"],["f07","abril de 2026"],["f08","junho de 2026"],
-    ["f09","junho de 2026"],["f12","junho de 2026"],["f10","agosto de 2026"],["f11","outubro de 2026"]
+    ["f09","junho de 2026"],["f12","junho de 2026"],["f10","agosto de 2026"],["f11","outubro de 2026"],["f13","nós três"],["f14","a gente"],["f15","você"]
   ];
-  document.getElementById('grid').innerHTML=fotos.map(([f,d])=>`<figure><img src="img/${f}.jpg" alt="Foto nossa de ${d}" loading="lazy"><figcaption>${d}</figcaption></figure>`).join('');
+  document.getElementById('grid').innerHTML=fotos.map(([f,d])=>`<figure><img src="img/${f}.jpg" alt="Foto nossa: ${d}" loading="lazy"><figcaption>${d}</figcaption></figure>`).join('');
   const btn=document.getElementById('abrir'),env=document.getElementById('env'),carta=document.getElementById('carta');
   btn.addEventListener('click',()=>{
     env.classList.add('open');btn.disabled=true;
