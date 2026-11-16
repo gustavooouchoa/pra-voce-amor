@@ -91,7 +91,7 @@ figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padd
   const fotos=[
     ["f01","maio de 2025"],["f02","maio de 2025"],["f03","junho de 2025"],["f04","setembro de 2025"],
     ["f05","novembro de 2025"],["f06","janeiro de 2026"],["f07","abril de 2026"],["f08","junho de 2026"],
-    ["f09","junho de 2026"],["f10","agosto de 2026"],["f11","outubro de 2026"]
+    ["f09","junho de 2026"],["f12","junho de 2026"],["f10","agosto de 2026"],["f11","outubro de 2026"]
   ];
   document.getElementById('grid').innerHTML=fotos.map(([f,d])=>`<figure><img src="img/${f}.jpg" alt="Foto nossa de ${d}" loading="lazy"><figcaption>${d}</figcaption></figure>`).join('');
   const btn=document.getElementById('abrir'),env=document.getElementById('env'),carta=document.getElementById('carta');
