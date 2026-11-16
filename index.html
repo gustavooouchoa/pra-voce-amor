@@ -47,6 +47,7 @@ background-image:repeating-linear-gradient(transparent 0 33px,var(--line) 33px 3
 figure{margin:0;background:#fff;padding:9px 9px 6px;box-shadow:0 8px 18px rgba(60,10,25,.18);border-radius:2px}
 figure:nth-child(odd){transform:rotate(-1.6deg)}figure:nth-child(even){transform:rotate(1.4deg)}
 .vid{display:block;width:min(100%,360px);margin:0 auto 34px;border-radius:10px;box-shadow:0 10px 24px rgba(60,10,25,.25);background:#000;aspect-ratio:9/16}
+.musica{margin:26px auto 0;width:min(300px,84vw)}.musica span{display:block;font:700 24px/1 Caveat,cursive;color:#f3c3cf;margin-bottom:8px}#yt,.musica iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:8px}
 figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee}
 figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padding-top:6px}
 .fim{text-align:center;color:#fbe9ec;padding:48px 20px 64px}
@@ -66,6 +67,7 @@ figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padd
       <div class="seal"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
     </div>
     <button id="abrir" type="button">Abrir a carta</button>
+    <div class="musica"><span>🎵 nossa música</span><div id="yt"></div></div>
   </div>
 </section>
 
@@ -98,7 +100,11 @@ figcaption{font:600 22px/1.2 Caveat,cursive;color:#5b2a36;text-align:center;padd
   ];
   document.getElementById('grid').innerHTML=fotos.map(([f,d])=>`<figure><img src="img/${f}.jpg" alt="Foto nossa: ${d}" loading="lazy"><figcaption>${d}</figcaption></figure>`).join('');
   const btn=document.getElementById('abrir'),env=document.getElementById('env'),carta=document.getElementById('carta');
+  const INICIO=64;
+  window.onYouTubeIframeAPIReady=()=>{window.__yt=new YT.Player('yt',{videoId:'G6Kspj3OO0s',playerVars:{start:INICIO,playsinline:1,rel:0,modestbranding:1}});};
+  const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);
   btn.addEventListener('click',()=>{
+    try{window.__yt.seekTo(INICIO,true);window.__yt.playVideo();}catch(e){}
     env.classList.add('open');btn.disabled=true;
     const reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
     setTimeout(()=>{carta.classList.add('show');document.getElementById('capa').style.minHeight='auto';carta.scrollIntoView({behavior:reduz?'auto':'smooth'});},reduz?0:750);
